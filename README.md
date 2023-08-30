@@ -32,6 +32,32 @@
 $ npm install
 ```
 
+## DB Management
+This project uses the [Prisma ORM](https://www.prisma.io/docs)
+Schema is defined is `prisma/schema.prisma`
+
+### Migrations
+#### Dev
+[Team development with Prisma Migrate](https://www.prisma.io/docs/guides/migrate/developing-with-prisma-migrate/team-development)
+
+To apply existing migrations run 
+```bash
+$ npx prisma migrate dev
+```
+
+After making schema changes, a migration file should be created with the command 
+```bash
+$ npx prisma migrate dev --name "description-of-migration"
+```
+
+### Seeds
+Basic db entries for local development are created via the seed file found in `prisma/seed.ts`
+
+It can be executed with the script:
+```bash
+$ npx prisma db seed
+```
+
 ## Running the app
 
 ```bash
