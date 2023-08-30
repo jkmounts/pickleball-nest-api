@@ -21,8 +21,20 @@ async function main() {
       name: 'Jim Tester',
     },
   });
+  const venue1 = await prisma.venue.upsert({
+    where: { id: 1 },
+    update: {},
+    create: {
+      id: 1,
+      name: 'Central Park',
+      address: '123 Main St',
+      city: 'Louisville',
+      state: 'KY',
+      zipCode: '40220',
+    },
+  });
 
-  console.log({ user1, user2 });
+  console.log({ user1, user2, venue1 });
 }
 
 // execute the main function
