@@ -6,9 +6,14 @@ import {
   providePrismaClientExceptionFilter,
 } from 'nestjs-prisma';
 import { UsersModule } from './users/users.module';
+import { VenuesModule } from './venues/venues.module';
 
 @Module({
-  imports: [PrismaModule.forRoot({ isGlobal: true }), UsersModule],
+  imports: [
+    PrismaModule.forRoot({ isGlobal: true }),
+    UsersModule,
+    VenuesModule,
+  ],
   controllers: [AppController],
   providers: [AppService, providePrismaClientExceptionFilter()],
 })
