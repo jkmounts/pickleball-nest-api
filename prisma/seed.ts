@@ -33,8 +33,16 @@ async function main() {
       zipCode: '40220',
     },
   });
+  const court1 = await prisma.court.upsert({
+    where: { venueId_courtNumber: { venueId: 1, courtNumber: 1 } },
+    update: {},
+    create: {
+      venueId: venue1.id,
+      courtNumber: 1,
+    },
+  });
 
-  console.log({ user1, user2, venue1 });
+  console.log({ user1, user2, venue1, court1 });
 }
 
 // execute the main function

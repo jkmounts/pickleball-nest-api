@@ -11,9 +11,9 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
   createdAt DateTime @default(now())
 }
 
@@ -26,4 +26,14 @@ model Venue {
   zipCode   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  courts    Court[]
+}
+
+model Court {
+  courtNumber Int
+  name        String?
+  venue       Venue   @relation(fields: [venueId], references: [id])
+  venueId     Int
+
+  @@id([venueId, courtNumber])
 }
