@@ -11,11 +11,14 @@ export class VenuesService {
   }
 
   findAll() {
-    return this.prisma.venue.findMany();
+    return this.prisma.venue.findMany({ include: { courts: true } });
   }
 
   findOne(id: number) {
-    return this.prisma.venue.findUniqueOrThrow({ where: { id } });
+    return this.prisma.venue.findUniqueOrThrow({
+      where: { id },
+      include: { courts: true },
+    });
   }
 
   update(id: number, updateVenueDto: UpdateVenueDto) {

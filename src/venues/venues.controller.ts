@@ -13,6 +13,7 @@ import { CreateVenueDto } from './dto/create-venue.dto';
 import { UpdateVenueDto } from './dto/update-venue.dto';
 import { ApiCreatedResponse, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { VenueEntity } from './entities/venue.entity';
+import { VenueWithCourtsEntity } from './entities/venueWithCourts.entity';
 
 @Controller('venues')
 @ApiTags('venues')
@@ -26,13 +27,13 @@ export class VenuesController {
   }
 
   @Get()
-  @ApiOkResponse({ type: VenueEntity, isArray: true })
+  @ApiOkResponse({ type: VenueWithCourtsEntity, isArray: true })
   findAll() {
     return this.venuesService.findAll();
   }
 
   @Get(':id')
-  @ApiOkResponse({ type: VenueEntity })
+  @ApiOkResponse({ type: VenueWithCourtsEntity })
   findOne(@Param('id', ParseIntPipe) id: number) {
     return this.venuesService.findOne(id);
   }
