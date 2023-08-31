@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  ParseIntPipe,
 } from '@nestjs/common';
 import { VenuesService } from './venues.service';
 import { CreateVenueDto } from './dto/create-venue.dto';
@@ -28,17 +29,20 @@ export class VenuesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.venuesService.findOne(+id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    return this.venuesService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateVenueDto: UpdateVenueDto) {
-    return this.venuesService.update(+id, updateVenueDto);
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateVenueDto: UpdateVenueDto,
+  ) {
+    return this.venuesService.update(id, updateVenueDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.venuesService.remove(+id);
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.venuesService.remove(id);
   }
 }
