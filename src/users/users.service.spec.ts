@@ -26,12 +26,53 @@ describe('UsersService', () => {
   });
 
   describe('create', () => {
-    it('should call prisma.create', async () => {
+    it('should call prisma.user.create', async () => {
       prisma.user.create.mockResolvedValue(mockUser);
 
       await expect(service.create(mockUser)).resolves.toEqual(mockUser);
       expect(prisma.user.create).toBeCalledTimes(1);
       expect(prisma.user.create).toBeCalledWith({ data: mockUser });
+    });
+  });
+
+  describe('findAll', () => {
+    it('should call prisma.user.findMany', async () => {
+      prisma.user.findMany.mockResolvedValue([mockUser]);
+
+      await expect(service.findAll()).resolves.toEqual([mockUser]);
+      expect(prisma.user.findMany).toBeCalledTimes(1);
+      expect(prisma.user.findMany).toBeCalledWith();
+    });
+  });
+
+  describe('findOne', () => {
+    it('should call prisma.user.findUniqueOrThrow', async () => {
+      prisma.user.findUniqueOrThrow.mockResolvedValue(mockUser);
+
+      await expect(service.findOne(1)).resolves.toEqual(mockUser);
+      expect(prisma.user.findUniqueOrThrow).toBeCalledTimes(1);
+      expect(prisma.user.findUniqueOrThrow).toBeCalledWith({
+        where: { id: 1 },
+      });
+    });
+  });
+
+  describe('update', () => {
+    it('should call prisma.user.update', async () => {
+      prisma.user.update.mockResolvedValue(mockUser);
+
+      await expect(service.update(1, mockUser)).resolves.toEqual(mockUser);
+      expect(prisma.user.update).toBeCalledTimes(1);
+      expect(prisma.user.update).toBeCalledWith({
+        where: { id: 1 },
+        data: mockUser,
+      });
+    });
+  });
+
+  describe('remove', () => {
+    it('should return a string(for now)', async () => {
+      expect(service.remove(1)).toEqual('This action removes a #1 user');
     });
   });
 });
