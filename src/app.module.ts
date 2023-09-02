@@ -7,12 +7,14 @@ import {
 } from 'nestjs-prisma';
 import { UsersModule } from './users/users.module';
 import { VenuesModule } from './venues/venues.module';
+import { CourtsModule } from './courts/courts.module';
 
 @Module({
   imports: [
     PrismaModule.forRoot({ isGlobal: true }),
     UsersModule,
     VenuesModule,
+    CourtsModule,
   ],
   controllers: [AppController],
   providers: [AppService, providePrismaClientExceptionFilter()],
