@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { CourtsController } from './courts.controller';
 import { CourtsService } from './courts.service';
 import { PrismaService } from 'nestjs-prisma';
-import { prismaMock } from 'src/singleton';
+import { prismaMock } from 'src/prismaMock/singleton';
 
 import { courtEntities } from './mocks/courts.mock';
 const mockCourt = courtEntities[0];

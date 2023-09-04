@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UsersService } from './users.service';
 import { PrismaService } from 'nestjs-prisma';
-import { prismaMock } from 'src/singleton';
+import { prismaMock } from 'src/prismaMock/singleton';
 
 import { userEntities } from './mocks/user.mock';
 const mockUser = userEntities[0];

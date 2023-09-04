@@ -2,7 +2,7 @@ module.exports = {
   clearMocks: true,
   preset: 'ts-jest',
   testEnvironment: 'node',
-  setupFilesAfterEnv: ['<rootDir>/singleton.ts'],
+  setupFilesAfterEnv: ['<rootDir>/prismaMock/singleton.ts'],
   moduleFileExtensions: ['js', 'json', 'ts'],
   rootDir: 'src',
   testRegex: '.*\\.spec\\.ts$',

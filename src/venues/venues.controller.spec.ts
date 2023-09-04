@@ -2,7 +2,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { VenuesController } from './venues.controller';
 import { VenuesService } from './venues.service';
 import { PrismaService } from 'nestjs-prisma';
-import { prismaMock } from 'src/singleton';
+import { prismaMock } from 'src/prismaMock/singleton';
 
 import { venueEntities } from './mocks/venues.mock';
 const mockVenue = venueEntities[0];

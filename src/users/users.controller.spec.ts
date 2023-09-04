@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
-import { prismaMock } from 'src/singleton';
+import { prismaMock } from 'src/prismaMock/singleton';
 import { PrismaService } from 'nestjs-prisma';
 
 describe('UsersController', () => {
