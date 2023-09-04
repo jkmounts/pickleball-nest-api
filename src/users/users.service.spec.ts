@@ -3,7 +3,8 @@ import { UsersService } from './users.service';
 import { PrismaService } from 'nestjs-prisma';
 import { prismaMock } from 'src/singleton';
 
-import mockUser from './entities/user.mock';
+import { userEntities } from './mocks/user.mock';
+const mockUser = userEntities[0];
 
 describe('UsersService', () => {
   let service: UsersService;
@@ -37,9 +38,9 @@ describe('UsersService', () => {
 
   describe('findAll', () => {
     it('should call prisma.user.findMany', async () => {
-      prisma.user.findMany.mockResolvedValue([mockUser]);
+      prisma.user.findMany.mockResolvedValue(userEntities);
 
-      await expect(service.findAll()).resolves.toEqual([mockUser]);
+      await expect(service.findAll()).resolves.toEqual(userEntities);
       expect(prisma.user.findMany).toBeCalledTimes(1);
       expect(prisma.user.findMany).toBeCalledWith();
     });
