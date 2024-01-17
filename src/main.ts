@@ -19,6 +19,7 @@ async function bootstrap() {
     .setDescription('Pickleball Api Documentation')
     .setVersion('0.1')
     .addBearerAuth()
+    .addSecurityRequirements('bearer')
     .build();
 
   const document = SwaggerModule.createDocument(app, swaggerConfig);
